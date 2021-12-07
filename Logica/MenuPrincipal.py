@@ -3,9 +3,13 @@ from tkinter import ttk
 
 import Algoritmo1
 
-def Video():
+def Webcam():
     
-    Algoritmo1.Deteccion()
+    Algoritmo1.Webcam()
+
+def Imagen():
+    
+    Algoritmo1.Imagen()
 
 def Interfaz(window):
         
@@ -17,10 +21,10 @@ def Interfaz(window):
     fondo1.pack()
     fondo1.place(x=-1, y=-1)
         
-    boton1 = ttk.Button(text="Detectar Rostro en Imagen")
+    boton1 = ttk.Button(text="Detectar Rostro en Imagen", command=Imagen)
     boton1.place(width=200, height=200, x=47, y=110)
 
-    boton2 = ttk.Button(text="Detectar Rostro en Video", command=Video)
+    boton2 = ttk.Button(text="Detectar Rostro en Video", command=Webcam)
     boton2.place(width=200, height=200, x=300, y=110)
     
     boton3 = ttk.Button(text="Lista Peronas Registradas")
