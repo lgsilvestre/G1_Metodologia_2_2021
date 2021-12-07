@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+
+<usuarios>
+	<usuario>
+		<username>admin</username>
+		<password>21232f297a57a5a743894a0e4a801fc3</password>
+	</usuario>
+	<usuario>
+		<username>MrCote33</username>
+		<password>f5aec04dc361275d8675c0ed8387d104</password>
+	</usuario>
+</usuarios>

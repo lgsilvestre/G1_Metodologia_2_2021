@@ -1,11 +1,15 @@
 from PIL import ImageTk, Image
 from tkinter import ttk
 
-import tkinter
+import Algoritmo1
 
-def Interfaz():
+def Video():
+    
+    Algoritmo1.Deteccion()
+
+def Interfaz(window):
         
-    imagen = Image.open("Interfaz 2.png")
+    imagen = Image.open("Recursos\Iconos\MenuPrincipal.png")
     render = ImageTk.PhotoImage(imagen)
     
     fondo1 = ttk.Label(window, image=render)
@@ -16,7 +20,7 @@ def Interfaz():
     boton1 = ttk.Button(text="Detectar Rostro en Imagen")
     boton1.place(width=200, height=200, x=47, y=110)
 
-    boton2 = ttk.Button(text="Detectar Rostro en Video")
+    boton2 = ttk.Button(text="Detectar Rostro en Video", command=Video)
     boton2.place(width=200, height=200, x=300, y=110)
     
     boton3 = ttk.Button(text="Lista Peronas Registradas")
@@ -28,16 +32,3 @@ def Interfaz():
     boton5 = ttk.Button(text="Configuración")
     boton5.place(width=200, height=200, x=425, y=350)
     
-if __name__ == '__main__':
-    
-    window = tkinter.Tk()
-    window.title('Facial Recognition')
-    window.geometry("800x600")
-    window.resizable(0,0)
-    
-    user = tkinter.StringVar()
-    password = tkinter.StringVar()
-    
-    Interfaz()
-    
-    window.mainloop()
