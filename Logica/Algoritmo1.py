@@ -51,7 +51,11 @@ def Deteccion():
             
         if(working):
             
-            image = cv2.resize(frame,(480,270))
+            ratio = 270 / len(frame)
+            width = int(len(frame[0]) * ratio)
+            height = int(len(frame) * ratio)
+            
+            image = cv2.resize(frame,(width,height))
     
             gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
             faces = face_cascade.detectMultiScale(gray, 1.1, 4)
