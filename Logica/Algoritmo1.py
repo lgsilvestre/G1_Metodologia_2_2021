@@ -59,16 +59,17 @@ def Deteccion():
     
             gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
             faces = face_cascade.detectMultiScale(gray, 1.1, 4)
-        
+            
             for (x, y , w ,h) in faces:
                 
                 cv2.rectangle(image, (x,y), (x+w, y+h), (255, 0 , 0), 2)
                 
+                face = gray[y:y + h, x:x + w]
+                face_resize = cv2.resize(face, ((x+w)-x,(y+h)-y))
+                
                 if(cont < 15):
                     
                     name = "testA"
-                    face = gray[y:y + h, x:x + w]
-                    face_resize = cv2.resize(face, ((x+w)-x,(y+h)-y))
                     cv2.imwrite('% s/% s.png' % ("Recursos\Caras\\", str(name) + str(cont)), face_resize)
                     cont += 1
                 

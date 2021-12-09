@@ -28,6 +28,9 @@ def Verificar():
             
             if(systemPassword.firstChild.data == resultado):
                 MenuPrincipal.Interfaz(window)
+                
+    user.set("")
+    password.set("")
 
 def Interfaz():
     
