@@ -6,6 +6,7 @@ import tkinter
 import hashlib
 
 import MenuPrincipal
+import MenuSuperAdmin
 
 users = minidom.parse("Recursos/Datos/usuarios.xml")
 
@@ -23,11 +24,17 @@ def Verificar():
         
         systemName = usuario.getElementsByTagName("username")[0]
         systemPassword = usuario.getElementsByTagName("password")[0]
+        systemLevel = usuario.getElementsByTagName("level")[0]
         
         if(systemName.firstChild.data == userName):
             
             if(systemPassword.firstChild.data == resultado):
-                MenuPrincipal.Interfaz(window)
+                
+                if(systemLevel.firstChild.data == "1"):
+                    MenuSuperAdmin.Interfaz(window)
+                    
+                if(systemLevel.firstChild.data == "0"):
+                    MenuPrincipal.Interfaz(window)
                 
     user.set("")
     password.set("")
