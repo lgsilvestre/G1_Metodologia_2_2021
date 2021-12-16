@@ -5,6 +5,7 @@ import tkinter
 
 import Algoritmo1
 import Informacion
+import Login
 
 ventana = None
     
@@ -19,6 +20,10 @@ def Webcam():
 def Imagen():
     
     Algoritmo1.Imagen()
+    
+def CerrarSesion():
+    
+    Login.Interfaz(ventana)    
 
 def Interfaz(window):
     
@@ -45,6 +50,6 @@ def Interfaz(window):
     boton5 = ttk.Button(text="Configuración", state=tkinter.DISABLED)
     boton5.place(width=194, height=193, x=426, y=355)
     
-    Boton1 = ttk.Button(text="Cerrar Sesión")
+    Boton1 = ttk.Button(text="Cerrar Sesión", command=CerrarSesion)
     Boton1.place(width=100, height=30, x=30, y=550)
     

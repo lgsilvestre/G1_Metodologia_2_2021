@@ -10,6 +10,10 @@ ventana = None
 def Info():
     
     Informacion.Interfaz(ventana,1)
+
+def CerrarSesion():
+    
+    Login.Interfaz(ventana)
     
 def Interfaz(window):
     
@@ -39,5 +43,5 @@ def Interfaz(window):
     boton5 = ttk.Button(text="Configuracion", state=tkinter.DISABLED)
     boton5.place(width=194, height=193, x=427, y=356)
     
-    Boton1 = ttk.Button(text="Cerrar Sesión")
+    Boton1 = ttk.Button(text="Cerrar Sesión", command=CerrarSesion)
     Boton1.place(width=100, height=30, x=30, y=550)
