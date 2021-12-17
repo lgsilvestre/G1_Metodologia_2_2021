@@ -5,7 +5,15 @@ from tkinter import ttk
 import tkinter
 import hashlib
 
+import MenuSuperAdmin
+
 users = minidom.parse("Recursos/Datos/usuarios.xml")
+ventana = None
+
+user = None
+password = None
+confirm = None
+level = None
 
 def Agregar():
     
@@ -45,10 +53,27 @@ def Agregar():
             
             #Archivo = open("Recursos/Datos/usuarios.xml", 'w')        
             #Archivo.write(usuarios.toxml())
-            
-def Interfaz():
+          
+def Volver():
     
-    imagen = Image.open("Recursos\Iconos\PlaceHolder.png")
+    MenuSuperAdmin.Interfaz(ventana)
+    
+def Interfaz(window):
+    
+    global ventana
+    global user
+    global password
+    global confirm
+    global level
+    
+    ventana = window
+    
+    user = tkinter.StringVar()
+    password = tkinter.StringVar()
+    confirm = tkinter.StringVar()
+    level = tkinter.StringVar()
+    
+    imagen = Image.open("Recursos\Iconos\RegistroUsuario.png")
     render = ImageTk.PhotoImage(imagen)
     
     fondo1 = ttk.Label(window, image=render)
@@ -73,18 +98,6 @@ def Interfaz():
     
     boton1 = ttk.Button(text="AGREGAR", command=Agregar, state=tkinter.DISABLED)
     boton1.place(width=170, height=50, x=332, y=395)
-
-if __name__ == '__main__':
     
-    window = tkinter.Tk()
-    window.title('Facial Recognition')
-    window.geometry("800x600")
-    window.resizable(0,0)
-    
-    user = tkinter.StringVar()
-    password = tkinter.StringVar()
-    confirm = tkinter.StringVar()
-    level = tkinter.StringVar()
-    
-    Interfaz()
-    window.mainloop()
+    Boton2 = ttk.Button(text="Regresar", command=Volver)
+    Boton2.place(width=100, height=30, x=30, y=550)

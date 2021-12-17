@@ -23,7 +23,7 @@ def Imagen():
     
 def CerrarSesion():
     
-    Login.Interfaz(ventana)    
+    Login.Interfaz(ventana)
 
 def Interfaz(window):
     

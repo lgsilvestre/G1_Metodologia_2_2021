@@ -9,10 +9,6 @@ import MenuPrincipal
 import MenuSuperAdmin
 
 users = minidom.parse("Recursos/Datos/usuarios.xml")
-ventana = None
-
-user = None
-password = None
 
 def Verificar():
     
@@ -35,23 +31,15 @@ def Verificar():
             if(systemPassword.firstChild.data == resultado):
                 
                 if(systemLevel.firstChild.data == "1"):
-                    MenuSuperAdmin.Interfaz(ventana)
+                    MenuSuperAdmin.Interfaz(window)
                     
                 if(systemLevel.firstChild.data == "0"):
-                    MenuPrincipal.Interfaz(ventana)
+                    MenuPrincipal.Interfaz(window)
                 
     user.set("")
     password.set("")
 
-def Interfaz(window):
-    
-    global ventana
-    global user
-    global password
-    
-    ventana = window
-    user = tkinter.StringVar()
-    password = tkinter.StringVar()
+def Interfaz():
     
     imagen = Image.open("Recursos\Iconos\MenuAcceso.png")
     render = ImageTk.PhotoImage(imagen)
@@ -70,3 +58,16 @@ def Interfaz(window):
     
     boton1 = ttk.Button(text="ACCEDER", command=Verificar)
     boton1.place(width=170, height=50, x=332, y=395)
+
+if __name__ == '__main__':
+    
+    window = tkinter.Tk()
+    window.title('Facial Recognition')
+    window.geometry("800x600")
+    window.resizable(0,0)
+    
+    user = tkinter.StringVar()
+    password = tkinter.StringVar()
+    
+    Interfaz()
+    window.mainloop()

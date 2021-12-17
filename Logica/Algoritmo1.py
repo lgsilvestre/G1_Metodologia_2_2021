@@ -35,6 +35,7 @@ def Deteccion():
         os.makedirs("Recursos\Caras\\")
     
     face_cascade = cv2.CascadeClassifier('Recursos/Datos/frontalface.xml')
+    font = cv2.FONT_HERSHEY_SIMPLEX
     
     working = False
     cont = 0
@@ -73,6 +74,9 @@ def Deteccion():
                     cv2.imwrite('% s/% s.png' % ("Recursos\Caras\\", str(name) + str(cont)), face_resize)
                     cont += 1
                 
+            rostros = "Rostros Detectados: " + str(len(faces))
+            cv2.rectangle(image, (5,5), (200,25), (0,0,0), -1)
+            cv2.putText(image, rostros, (10,20), font, 0.5, (0, 255, 0), 1, cv2.LINE_AA)
             cv2.imshow('Reconocimiento (Presionar Q para Salir)', image)
             
             if cv2.waitKey(1) & 0xFF == ord('q'): # Para salir apretar 'Q'
