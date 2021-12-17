@@ -79,7 +79,7 @@ def Deteccion():
             cv2.putText(image, rostros, (10,20), font, 0.5, (0, 255, 0), 1, cv2.LINE_AA)
             cv2.imshow('Reconocimiento (Presionar Q para Salir)', image)
             
-            if cv2.waitKey(1) & 0xFF == ord('q'): # Para salir apretar 'Q'
+            if cv2.waitKey(1) & 0xFF == ord('q'):
                 break
             
             time.sleep(0.1)

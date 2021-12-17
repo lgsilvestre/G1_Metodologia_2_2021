@@ -5,9 +5,14 @@ import tkinter
 
 import Informacion
 import CrearUsuario
+import ModificarUsuario
 import Login
 
 ventana = None
+
+def Modificar():
+    
+    ModificarUsuario.Interfaz(ventana)
     
 def Crear():
     
@@ -37,7 +42,7 @@ def Interfaz(window):
     boton1 = ttk.Button(text="Crear Usuario", command=Crear)
     boton1.place(width=194, height=193, x=50, y=114)
 
-    boton2 = ttk.Button(text="Modificar Usuario")
+    boton2 = ttk.Button(text="Modificar Usuario", command=Modificar)
     boton2.place(width=194, height=193, x=303, y=115)
     
     boton3 = ttk.Button(text="Eliminar Usuario", state=tkinter.DISABLED)

@@ -17,12 +17,12 @@ level = None
 
 def Agregar():
     
+    users = minidom.parse("Recursos/Datos/usuarios.xml")
+    
     userName = user.get()
     userPassword = password.get()
     userConfirm = confirm.get()
     userLevel = level.get()[6:7]
-    
-    print(userLevel)
     
     encoded = hashlib.md5(userPassword.encode())
     resultado = encoded.hexdigest()
@@ -48,11 +48,26 @@ def Agregar():
             
             nodo.appendChild(userElement)
             
-            usuarios = users.getElementsByTagName("usuarios")[0]
-            usuarios.appendChild(nodo)
+            usuarios = users.getElementsByTagName("usuario")
+            largo = len(usuarios)
+            cont = 0
             
-            #Archivo = open("Recursos/Datos/usuarios.xml", 'w')        
-            #Archivo.write(usuarios.toxml())
+            Archivo = open("Recursos/Datos/usuarios.xml", 'w')    
+            Archivo.write("<usuarios>\n")
+            
+            for usuario in usuarios:
+                
+                if(cont == largo-1):
+                    Archivo.write(nodo.toxml()+'\n')
+                    
+                Archivo.write(usuario.toxml()+'\n')
+                cont += 1
+                
+            Archivo.write("</usuarios>")
+            
+    user.set("")
+    password.set("")
+    confirm.set("")
           
 def Volver():
     
@@ -96,7 +111,7 @@ def Interfaz(window):
     levels.current(0)
     levels.place(width=240, height=30, x=297, y=330)
     
-    boton1 = ttk.Button(text="AGREGAR", command=Agregar, state=tkinter.DISABLED)
+    boton1 = ttk.Button(text="AGREGAR", command=Agregar)
     boton1.place(width=170, height=50, x=332, y=395)
     
     Boton2 = ttk.Button(text="Regresar", command=Volver)
